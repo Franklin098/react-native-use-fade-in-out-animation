@@ -1,18 +1,21 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-use-fade-in-out-animation';
+import { Animated, Button, StyleSheet, View } from 'react-native';
+import { useAnimation } from 'react-native-use-fade-in-out-animation';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+  const { fadeIn, opacity, fadeOut } = useAnimation();
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Animated.View style={{ ...styles.box, opacity }} />
+
+      <Button title="1 - Fade In" onPress={() => fadeIn()} />
+
+      <Button
+        title="2 - Fade Out"
+        onPress={() => fadeOut({ duration: 1000, useNativeDriver: true })}
+      />
     </View>
   );
 }
@@ -22,10 +25,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'black',
   },
   box: {
-    width: 60,
-    height: 60,
+    width: 100,
+    height: 100,
     marginVertical: 20,
+    backgroundColor: 'grey',
   },
 });

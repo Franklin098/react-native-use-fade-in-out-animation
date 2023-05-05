@@ -11,6 +11,9 @@ npm install react-native-use-fade-in-out-animation
 ## Usage
 
 ```js
+import * as React from 'react';
+
+import { Animated, Button, StyleSheet, View } from 'react-native';
 import { useFadeAnimation } from 'react-native-use-fade-in-out-animation';
 
 export default function App() {
@@ -27,8 +30,10 @@ export default function App() {
         style={{ ...styles.box, opacity }}
       />
 
+      {/* Trigger FadeIn animation  */}
       <Button title="1 - Fade In" onPress={() => fadeIn({ duration: 300 })} />
 
+      {/* Trigger FadeOut animation  */}
       <Button
         title="2 - Fade Out"
         onPress={() => fadeOut({ duration: 1000 })}

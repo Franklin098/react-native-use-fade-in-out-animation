@@ -2,32 +2,32 @@ import { useRef } from 'react';
 import { Animated } from 'react-native';
 
 interface FadeAnimationParams {
-  duration?: number;
+  duration: number;
   useNativeDriver?: boolean;
+  delay?: number;
+  isInteraction?: boolean;
+  easing?: (value: number) => number;
 }
 
-export const useAnimation = () => {
+export const useFadeAnimation = () => {
   const opacity = useRef(new Animated.Value(0)).current;
 
-  const fadeIn = (params?: FadeAnimationParams) => {
-    const { duration = 300, useNativeDriver = true }: FadeAnimationParams =
-      params || {};
-
+  const fadeIn = ({ useNativeDriver = true, ...rest }: FadeAnimationParams) => {
     Animated.timing(opacity, {
       toValue: 1,
-      duration,
       useNativeDriver,
+      ...rest,
     }).start();
   };
 
-  const fadeOut = (params?: FadeAnimationParams) => {
-    const { duration = 300, useNativeDriver = true }: FadeAnimationParams =
-      params || {};
-
+  const fadeOut = ({
+    useNativeDriver = true,
+    ...rest
+  }: FadeAnimationParams) => {
     Animated.timing(opacity, {
       toValue: 0,
-      duration,
       useNativeDriver,
+      ...rest,
     }).start();
   };
 

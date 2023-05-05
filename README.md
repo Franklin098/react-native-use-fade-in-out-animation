@@ -53,6 +53,8 @@ const styles = StyleSheet.create({
 });
 ```
 
+![Example](./images/demo-1.gif)
+
 You can use any of the Animated components from react-native.
 
 ```
@@ -60,6 +62,24 @@ You can use any of the Animated components from react-native.
 <Animated.Image/>
 <Animated.Text/>
 <Animated.ScrollView/>
+```
+
+## API
+
+```
+
+interface FadeAnimationParams {
+  duration: number;  // Required. Animation duration in milliseconds
+  useNativeDriver?: boolean; // Optional. Default is true.
+
+  // optional fields:
+  delay?: number;
+  isInteraction?: boolean;
+  easing?: (value: number) => number;
+}
+
+
+<Button title="1 - Fade In" onPress={() => fadeIn({ duration: 300 })} />
 ```
 
 ## Contributing

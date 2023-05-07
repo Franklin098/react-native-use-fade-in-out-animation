@@ -10,6 +10,8 @@ npm install react-native-use-fade-in-out-animation
 
 ## Usage
 
+![Example](./images/demo-1.gif)
+
 ```js
 import * as React from 'react';
 
@@ -57,8 +59,6 @@ const styles = StyleSheet.create({
   },
 });
 ```
-
-![Example](./images/demo-1.gif)
 
 You can use any of the Animated components from react-native.
 
